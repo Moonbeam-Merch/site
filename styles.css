@@ -1,7 +1,7 @@
 :root{
   --pastel-pink: #E7C6E9;   /* top-left */
   --pale-green:  #CFE8D9;   /* bottom-right */
-  --navy:        #071A3A;   /* dark blue for logo & text */
+  --navy:        #041038;   /* dark blue for logo & text */
   --glass-white: rgba(255,255,255,0.08);
 }
 
@@ -67,8 +67,11 @@ html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system,
   width: 36vw;
   height: auto;
   z-index:1;
-  /* Colorize logo to #041038 */
-  filter: brightness(0) saturate(100%) invert(8%) sepia(50%) saturate(500%) hue-rotate(220deg) drop-shadow(0 6px 18px rgba(0,0,0,0.12));
+  /* gentle drop shadow for separation */
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.12));
+  /* Color the logo dark blue */
+  color: var(--navy);
+  fill: currentColor;
 }
 
 /* Title & subtext */
