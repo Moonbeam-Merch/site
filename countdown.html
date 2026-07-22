@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Moonbeam-Merch — Coming Soon</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .countdown {
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+      max-width: 400px;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .countdown-value {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-size: clamp(0.7rem, 2vw, 0.85rem);
+      color: rgba(7, 26, 58, 0.75);
+      margin-top: 0.4rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 480px) {
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+
+      .countdown-item {
+        padding: 0.8rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .countdown-item {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage" role="main" aria-labelledby="coming-title">
+    <!-- Replace logo.svg with your logo file (logo.svg or logo.png).
+         If you use an SVG file you can style its fill via CSS (see styles.css notes). -->
+    <img src="Logo.svg" alt="Moonbeam-Merch logo" class="logo" id="moonbeam-logo">
+
+    <h1 id="coming-title" class="title">Coming soon…</h1>
+
+    <!-- Countdown Timer -->
+    <div class="countdown" aria-live="polite" aria-label="Time remaining until September 26">
+      <div class="countdown-item">
+        <div class="countdown-value" id="days">0</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-value" id="hours">0</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-value" id="minutes">0</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-value" id="seconds">0</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+
+    <!-- Optional short line -->
+    <p class="sub">Moonbeam-Merch is getting ready. Stay tuned.</p>
+  </main>
+
+  <script>
+    function updateCountdown() {
+      // Target date: September 26 of the current year
+      const now = new Date();
+      let targetDate = new Date(now.getFullYear(), 8, 26, 23, 59, 59); // Month is 0-indexed, so 8 = September
+
+      // If the target date has passed this year, target next year
+      if (now > targetDate) {
+        targetDate = new Date(now.getFullYear() + 1, 8, 26, 23, 59, 59);
+      }
+
+      const timeRemaining = targetDate - now;
+
+      if (timeRemaining <= 0) {
+        // Countdown has ended
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '0';
+        document.getElementById('minutes').textContent = '0';
+        document.getElementById('seconds').textContent = '0';
+        return;
+      }
+
+      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    // Update immediately and then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
