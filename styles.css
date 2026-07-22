@@ -1,0 +1,112 @@
+:root{
+  --pastel-pink: #E7C6E9;   /* top-left */
+  --pale-green:  #CFE8D9;   /* bottom-right */
+  --navy:        #071A3A;   /* dark blue for logo & text */
+  --glass-white: rgba(255,255,255,0.08);
+}
+
+/* Reset */
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+.stage{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1.1rem;
+  padding:4vw;
+  position:relative;
+  overflow:hidden;
+  /* diagonal pastel gradient */
+  background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--pale-green) 100%);
+}
+
+/* Slight radial vignetting for depth */
+.stage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: radial-gradient(60% 40% at 50% 40%, rgba(255,255,255,0.03), transparent 30%),
+              linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.04) 100%);
+  mix-blend-mode: soft-light;
+}
+
+/* Shimmering diagonal streak */
+.stage::before{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  pointer-events:none;
+  background: linear-gradient(90deg, rgba(255,255,255,0.00) 0%,
+                                      rgba(255,255,255,0.10) 45%,
+                                      rgba(255,255,255,0.16) 50%,
+                                      rgba(255,255,255,0.10) 55%,
+                                      rgba(255,255,255,0.00) 100%);
+  transform: rotate(-20deg) translateX(-120%);
+  filter: blur(12px);
+  mix-blend-mode: overlay;
+  animation: shimmer 7s linear infinite;
+  opacity:0.9;
+}
+
+@keyframes shimmer{
+  0%   { transform: rotate(-20deg) translateX(-120%); }
+  100% { transform: rotate(-20deg) translateX(120%); }
+}
+
+/* Logo */
+.logo{
+  display:block;
+  max-width: min(72vw, 980px);
+  width: 72vw;
+  height: auto;
+  z-index:1;
+  /* gentle drop shadow for separation */
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.12));
+}
+
+/* If you use an inline SVG or an SVG file where the paths use currentColor,
+   you can force the logo color with the following (uncomment if needed):
+.logo {
+  color: var(--navy);
+  fill: currentColor;
+}
+*/
+
+/* Title & subtext */
+.title{
+  margin:0;
+  z-index:1;
+  color:var(--navy);
+  font-weight:600;
+  letter-spacing:0.08em;
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  text-align:center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.12);
+}
+
+.sub{
+  margin:0;
+  color: rgba(7,26,58,0.82);
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  z-index:1;
+  opacity:0.95;
+  text-align:center;
+}
+
+/* Nice scaling on very small screens */
+@media (max-width:480px){
+  .logo{ width:84vw; }
+  .stage{ padding:6vw 4vw; }
+}
+
+/* Accessibility: prefer-reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  .stage::before { animation: none; transform:none; opacity:0.6; }
+}
