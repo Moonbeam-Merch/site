@@ -63,12 +63,15 @@ html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system,
 /* Logo */
 .logo{
   display:block;
-  max-width: min(72vw, 980px);
-  width: 72vw;
+  max-width: min(36vw, 480px);
+  width: 36vw;
   height: auto;
   z-index:1;
   /* gentle drop shadow for separation */
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.12));
+  /* Color the logo dark blue */
+  color: var(--navy);
+  fill: currentColor;
 }
 
 /* If you use an inline SVG or an SVG file where the paths use currentColor,
@@ -102,7 +105,7 @@ html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system,
 
 /* Nice scaling on very small screens */
 @media (max-width:480px){
-  .logo{ width:84vw; }
+  .logo{ width:54vw; }
   .stage{ padding:6vw 4vw; }
 }
 
