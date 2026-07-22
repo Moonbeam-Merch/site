@@ -1,7 +1,7 @@
 :root{
   --pastel-pink: #E7C6E9;   /* top-left */
   --pale-green:  #CFE8D9;   /* bottom-right */
-  --navy:        #071A3A;   /* dark blue for logo & text */
+  --navy:        #041038;   /* dark blue for logo & text */
   --glass-white: rgba(255,255,255,0.08);
 }
 
@@ -73,14 +73,6 @@ html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system,
   color: var(--navy);
   fill: currentColor;
 }
-
-/* If you use an inline SVG or an SVG file where the paths use currentColor,
-   you can force the logo color with the following (uncomment if needed):
-.logo {
-  color: var(--navy);
-  fill: currentColor;
-}
-*/
 
 /* Title & subtext */
 .title{
