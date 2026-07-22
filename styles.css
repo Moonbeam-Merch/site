@@ -67,8 +67,8 @@ html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system,
   width: 36vw;
   height: auto;
   z-index:1;
-  /* Colorize logo to navy blue */
-  filter: brightness(0) saturate(100%) invert(15%) sepia(30%) saturate(1500%) hue-rotate(210deg) drop-shadow(0 6px 18px rgba(0,0,0,0.12));
+  /* Colorize logo to #041038 */
+  filter: brightness(0) saturate(100%) invert(8%) sepia(50%) saturate(500%) hue-rotate(220deg) drop-shadow(0 6px 18px rgba(0,0,0,0.12));
 }
 
 /* Title & subtext */
