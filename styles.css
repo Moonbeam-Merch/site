@@ -67,11 +67,8 @@ html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system,
   width: 36vw;
   height: auto;
   z-index:1;
-  /* gentle drop shadow for separation */
-  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.12));
-  /* Color the logo dark blue */
-  color: var(--navy);
-  fill: currentColor;
+  /* Filter to colorize logo to navy blue */
+  filter: invert(1) hue-rotate(200deg) brightness(0.4) drop-shadow(0 6px 18px rgba(0,0,0,0.12));
 }
 
 /* Title & subtext */
