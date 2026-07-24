@@ -19,8 +19,8 @@ html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system,
   padding:4vw;
   position:relative;
   overflow:hidden;
-  /* diagonal pastel gradient */
-  background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--pale-green) 100%);
+  /* diagonal pastel gradient with white midpoint */
+  background: linear-gradient(135deg, var(--pastel-pink) 0%, #FFFFFF 50%, var(--pale-green) 100%);
 }
 
 /* Slight radial vignetting for depth */
